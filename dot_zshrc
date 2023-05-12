@@ -1,6 +1,7 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
@@ -11,7 +12,6 @@ fi
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
 #Bash-completion like feature
 autoload -Uz compinit
 compinit
@@ -20,111 +20,36 @@ compinit
 bindkey '\e[H'    beginning-of-line
 bindkey '\e[F'    end-of-line
 
-r-delregion() {
-  if ((REGION_ACTIVE)) then
-     zle kill-region
-  else 
-    local widget_name=$1
-    shift
-    zle $widget_name -- $@
-  fi
-}
-
-r-deselect() {
-  ((REGION_ACTIVE = 0))
-  local widget_name=$1
-  shift
-  zle $widget_name -- $@
-}
-
-r-select() {
-  ((REGION_ACTIVE)) || zle set-mark-command
-  local widget_name=$1
-  shift
-  zle $widget_name -- $@
-}
-
-for key     kcap   seq        mode   widget (
-    sleft   kLFT   $'\e[1;2D' select   backward-char
-    sright  kRIT   $'\e[1;2C' select   forward-char
-    sup     kri    $'\e[1;2A' select   up-line-or-history
-    sdown   kind   $'\e[1;2B' select   down-line-or-history
-
-    send    kEND   $'\E[1;2F' select   end-of-line
-    send2   x      $'\E[4;2~' select   end-of-line
-
-    shome   kHOM   $'\E[1;2H' select   beginning-of-line
-    shome2  x      $'\E[1;2~' select   beginning-of-line
-
-    left    kcub1  $'\EOD'    deselect backward-char
-    right   kcuf1  $'\EOC'    deselect forward-char
-
-    end     kend   $'\EOF'    deselect end-of-line
-    end2    x      $'\E4~'    deselect end-of-line
-
-    home    khome  $'\EOH'    deselect beginning-of-line
-    home2   x      $'\E1~'    deselect beginning-of-line
-
-    csleft  x      $'\E[1;6D' select   backward-word
-    csright x      $'\E[1;6C' select   forward-word
-    csend   x      $'\E[1;6F' select   end-of-line
-    cshome  x      $'\E[1;6H' select   beginning-of-line
-
-    cleft   x      $'\E[1;5D' deselect backward-word
-    cright  x      $'\E[1;5C' deselect forward-word
-
-    del     kdch1   $'\E[3~'  delregion delete-char
-    bs      x       $'^?'     delregion backward-delete-char
-
-  ) {
-  eval "key-$key() {
-    r-$mode $widget \$@
-  }"
-  zle -N key-$key
-  bindkey ${terminfo[$kcap]-$seq} key-$key
-}
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 #zsh autocomplete
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-    autoload -Uz compinit
-    compinit
-fi
-
-_dotnet_zsh_complete() 
-{
-  local completions=("$(dotnet complete "$words")")
-
-  # If the completion list is empty, just continue with filename selection
-  if [ -z "$completions" ]
-  then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-
-  # This is not a variable assignment, don't remove spaces!
-  _values = "${(ps:\n:)completions}"
-}
-
-compdef _dotnet_zsh_complete dotnet
-export PATH="/usr/local/bin:$PATH"
-#source ~/.zplug/init.zsh
-#zplug "greymd/docker-zsh-completion"
+alias dircolors='gdircolors'
 
 plugins=(
-  git
-  docker
+#  git
+#  docker
   sudo
-  kubectl
-  zsh-autosuggestions
+  zsh-dircolors-solarized
+#  kubectl
+#  zsh-autosuggestions
+#  zsh-syntax-highlighting
+#  fast-syntax-highlighting 
+#  zsh-autocomplete
+  
   fd
   fzf
+#  colored-man-pages
+  #ubuntu
 )
 
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
 alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
+#eval "$(starship init zsh)"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
