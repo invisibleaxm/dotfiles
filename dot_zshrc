@@ -47,8 +47,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias gitm="git checkout mainr"
 
-[[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/~/.fzf/shell/key-bindings.zsh"
-[[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/~/.fzf/shell/completion.zsh"
+[[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
+[[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
 
 export EDITOR=nvim
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
