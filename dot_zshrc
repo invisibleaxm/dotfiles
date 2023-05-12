@@ -8,7 +8,7 @@ fi
 
 if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  source ~/powerlevel10k/powerlevel10k.zsh-theme
+  source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
 
@@ -17,8 +17,8 @@ fi
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
 
 #Bash-completion like feature
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
 
 #Key bindings for home and end buttons (beggining and end of line)
 bindkey '\e[H'    beginning-of-line
@@ -113,7 +113,18 @@ _dotnet_zsh_complete()
 
 compdef _dotnet_zsh_complete dotnet
 export PATH="/usr/local/bin:$PATH"
-source ~/.zplug/init.zsh
-zplug "greymd/docker-zsh-completion"
+#source ~/.zplug/init.zsh
+#zplug "greymd/docker-zsh-completion"
 
 export EDITOR=nvim
+plugins=(
+  git
+  docker
+  sudo
+  kubectl
+  zsh-autosuggestions
+  fd
+  fzf
+)
+
+source $ZSH/oh-my-zsh.sh
