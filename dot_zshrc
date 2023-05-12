@@ -45,11 +45,19 @@ plugins=(
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
+alias gitm="git checkout mainr"
+
+[[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/~/.fzf/shell/key-bindings.zsh"
+[[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/~/.fzf/shell/completion.zsh"
+
 export EDITOR=nvim
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
 alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
+alias ll="ls -ltra"
 #eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+  
