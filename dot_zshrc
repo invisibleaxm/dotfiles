@@ -27,29 +27,31 @@ bindkey '\e[F'    end-of-line
 #zsh autocomplete
 if [[ `uname` == "Darwin" ]]; then
   alias dircolors='gdircolors'
-plugins=(
-  fd
-  fzf
-  sudo
-  zsh-dircolors-solarized
-)
-else
+  plugins=(
+    fd
+    fzf
+    sudo
+    zsh-dircolors-solarized
+  )
+else #ubuntu section
  
-plugins=(
-  fd
-  fzf
-  git
-  docker
-  sudo
-  zsh-dircolors-solarized
-#  kubectl
-  zsh-autosuggestions
-#  zsh-syntax-highlighting
-#  fast-syntax-highlighting 
-#  zsh-autocomplete
-#  colored-man-pages
-  ubuntu
-)
+  export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+  export PATH="$PATH:$BREW_HOME"
+  plugins=(
+    fd
+    fzf
+    git
+    docker
+    sudo
+    zsh-dircolors-solarized
+  #  kubectl
+    zsh-autosuggestions
+  #  zsh-syntax-highlighting
+  #  fast-syntax-highlighting 
+  #  zsh-autocomplete
+  #  colored-man-pages
+    ubuntu
+  )
 fi
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -66,8 +68,6 @@ alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
 alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
-export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-[[ -f "$BREW_HOME" ]] && export PATH="$PATH:$BREW_HOME"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
