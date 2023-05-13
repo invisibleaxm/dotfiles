@@ -11,6 +11,9 @@ if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
 fi
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+setopt histignorealldups sharehistory
+HISTSIZE=1000
+SAVEHIST=1000
 
 #Bash-completion like feature
 autoload -Uz compinit
@@ -22,11 +25,14 @@ bindkey '\e[F'    end-of-line
 
 #eval "$(pyenv init -)"
 #zsh autocomplete
-
-alias dircolors='gdircolors'
+if [[ `uname` == "Darwin" ]]; then
+  alias dircolors='gdircolors'
+fi
 
 plugins=(
-#  git
+  fd
+  fzf
+  git
 #  docker
   sudo
   zsh-dircolors-solarized
@@ -35,9 +41,6 @@ plugins=(
 #  zsh-syntax-highlighting
 #  fast-syntax-highlighting 
 #  zsh-autocomplete
-  
-  fd
-  fzf
 #  colored-man-pages
   #ubuntu
 )
@@ -56,7 +59,8 @@ alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
 alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
-#eval "$(starship init zsh)"
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+[[ -f "$BREW_HOME" ]] && export PATH="$PATH:$BREW_HOME"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
