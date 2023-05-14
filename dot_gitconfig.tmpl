@@ -9,6 +9,9 @@
 [credential]
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 {{   end }}
+{{ else }}
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
 {{ end }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
@@ -31,3 +34,4 @@
     le = log --oneline --decorate #Default look for short git log
     logtree = "log --graph --oneline --decorate --all" # same as above, but with graph
     filelog = log -u # See all the commits related to a file, with the diff of the changes with git log -u
+    kraken = !open "gitkraken://repo$(cd "${GIT_PREFIX:-.}/${1:-.}" && git rev-parse --show-toplevel); :"
