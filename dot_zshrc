@@ -56,8 +56,13 @@ else #ubuntu section
   )
 fi
 
+# Autoload zsh shell functions defined in the function path 
+fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
+# shell completion
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
+
+autoload -Uz load_azdevops
 
 alias gitm="git checkout mainr"
 

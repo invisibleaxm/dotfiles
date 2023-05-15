@@ -1,0 +1,15 @@
+unlock_bw_if_locked() {
+  if [[ -z $BW_SESSION ]] ; then
+    >&2 echo 'bw locked - unlocking into a new session'
+    export BW_SESSION="$(bw unlock --raw)"
+  fi
+}
+load_azdevops() {
+  unlock_bw_if_locked
+  local -r devops_patid='108a1618-e6cc-43f9-957c-af3300002e66'
+  local devops_token
+  devops_token="$(bw get notes $devops_patid)"
+  export SYSTEM_ACCESSTOKEN="$devops_token"
+  export PERSONAL_ACCESS_TOKEN="$devops_token"
+}
+load_azdevops "$@"
