@@ -70,6 +70,8 @@ alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
 alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
+alias cls="clear"
+eval $(thefuck --alias)
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
