@@ -9,11 +9,13 @@ if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
   source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
-
+#vi editing mode
+bindkey -v
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 setopt histignorealldups sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
+HISTFILE=~/.zsh_history
 
 #Bash-completion like feature
 autoload -Uz compinit
