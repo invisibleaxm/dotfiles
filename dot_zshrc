@@ -17,7 +17,9 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-#Bash-completion like feature
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# #Bash-completion like feature
 autoload -Uz compinit
 compinit
 
@@ -37,7 +39,7 @@ if [[ `uname` == "Darwin" ]]; then
     zsh-dircolors-solarized
   )
 else #ubuntu section
- 
+
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
   export PATH="$PATH:$BREW_HOME"
   plugins=(
@@ -51,14 +53,14 @@ else #ubuntu section
   #  kubectl
     zsh-autosuggestions
   #  zsh-syntax-highlighting
-  #  fast-syntax-highlighting 
+  #  fast-syntax-highlighting
   #  zsh-autocomplete
   #  colored-man-pages
     ubuntu
   )
 fi
 
-# Autoload zsh shell functions defined in the function path 
+# Autoload zsh shell functions defined in the function path
 fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 # shell completion
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -84,4 +86,4 @@ eval $(thefuck --alias)
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
-  
+
