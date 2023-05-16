@@ -30,6 +30,7 @@ bindkey '\e[F'    end-of-line
 if [[ `uname` == "Darwin" ]]; then
   alias dircolors='gdircolors'
   plugins=(
+    vi-mode
     fd
     fzf
     sudo
@@ -40,6 +41,7 @@ else #ubuntu section
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
   export PATH="$PATH:$BREW_HOME"
   plugins=(
+    vi-mode
     fd
     fzf
     git
@@ -62,7 +64,8 @@ fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
-autoload -Uz load_azdevops
+autoload -Uz load_azdevops tmux_sessionizer
+bindkey -s ^f "tmux_sessionizer\n"
 
 alias gitm="git checkout mainr"
 
