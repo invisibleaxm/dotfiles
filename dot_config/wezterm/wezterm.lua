@@ -14,9 +14,16 @@ end
 
 -- For example, changing the color scheme:
 --[[ config.color_scheme = "AdventureTime" ]]
-config.color_scheme = "Batman"
+--[[ config.color_scheme = "Batman" ]]
+color_scheme = "Catppuccin Mocha"
 config.window_background_opacity = 0.9
-config.font = wezterm.font 'FiraCode Nerd Font'
+--[[ font_size = 11.0 ]]
+--[[ allow_square_glyphs_to_overflow_width = "Always" ]]
+--[[ config.font = wezterm.font { ]]
+--[[   family = 'FiraCode Nerd Font', ]]
+--[[ } ]]
+--[[ cell_width = 1.2 ]]
+--[[ wezterm.font 'FiraCode Nerd Font' ]]
 --config.font = westerm.font "FiraCode Nerd Font"
 
 -- and finally, return the configuration to wezterm
