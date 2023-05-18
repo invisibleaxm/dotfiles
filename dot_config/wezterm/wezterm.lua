@@ -8,6 +8,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+config.term = "wezterm"
 -- This is where you actually apply your config choices
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
@@ -15,9 +16,9 @@ end
 config.color_scheme = "AdventureTime"
 --config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 12
-config.cell_width = 0.9
-config.window_background_opacity = 0.9
+config.font_size = 11
+config.cell_width = 1.0
+config.window_background_opacity = 0.95
 config.initial_cols = 140
 config.initial_rows = 40
 config.hide_tab_bar_if_only_one_tab = true
