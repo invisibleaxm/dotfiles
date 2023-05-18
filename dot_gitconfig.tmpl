@@ -9,7 +9,9 @@
 [credential]
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 {{   end }}
-{{ else }}
+{{ end }}
+
+{{- if eq .chezmoi.os "darwin" -}}
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
 {{ end }}
@@ -20,12 +22,7 @@
     unst = reset HEAD
     stage = add
     st = add
-    unci = reset --soft HEAD^
-    undo-commit = reset --soft HEAD^
-    ci = commit
-    st = status
-    co = checkout
-    br = branch
+    unci = reset --soft HEAD^ undo-commit = reset --soft HEAD^ ci = commit st = status co = checkout br = branch
     last = log -1 HEAD
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate # List commits in short form, with colors and branch/tag annotations.
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat # List commits showing changed files
