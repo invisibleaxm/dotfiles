@@ -59,6 +59,7 @@ else #ubuntu section
   #  colored-man-pages
     ubuntu
     virtualenv
+#    pyenv
   )
 fi
 
