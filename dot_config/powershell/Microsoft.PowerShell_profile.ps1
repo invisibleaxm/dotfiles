@@ -13,7 +13,7 @@ if([Environment]::OSVersion -contains "Win") {
 
 }
 
-
+$env:environment = "dev"
 $env:EDITOR = 'nvim'
 $alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
@@ -65,6 +65,10 @@ function auto {
   Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
   Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
   Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
+  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+  if (Test-Path($ChocolateyProfile)) {
+    Import-Module "$ChocolateyProfile"
+  }
 
 }
 
