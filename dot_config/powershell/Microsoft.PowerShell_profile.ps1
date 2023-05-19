@@ -1,17 +1,18 @@
 try {
   Import-Module -Name "PSReadLine" -ErrorAction Ignore
   Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
+  Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
 } catch {
 }
 
-
+<#
 if([Environment]::OSVersion -match "Win") {
   & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_lean.omp.json" --print) -join "`n"))
 
 } else {
   oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
-
 }
+#>
 
 $env:environment = "dev"
 $env:EDITOR = 'nvim'
@@ -160,6 +161,9 @@ Set-PSReadLineKeyHandler -Key F1 `
       }
     }
   }
-}
+}# replace 'Ctrl+t' and 'Ctrl+r' with your preferred bindings:
 
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 #$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
+Invoke-Expression (&starship init powershell)
+

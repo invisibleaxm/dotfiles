@@ -25,8 +25,8 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" }
 end
 config.window_background_opacity = 0.95
-config.initial_cols = 140
-config.initial_rows = 40
+config.initial_cols = 120
+config.initial_rows = 30
 config.enable_scroll_bar = true
 config.scrollback_lines = 5000
 config.hyperlink_rules = {
