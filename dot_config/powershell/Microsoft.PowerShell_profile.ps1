@@ -1,8 +1,18 @@
-Import-Module -Name "PSReadLine"
-Import-Module -Name "Terminal-Icons"
+try {
+  Import-Module -Name "PSReadLine" -ErrorAction Ignore
+  Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
+} catch {
+}
 
-oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
-New-Alias -Name vim -Value "/opt/homebrew/bin/nvim" -ErrorAction SilentlyContinue
+# oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
+& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_lean.omp.json" --print) -join "`n"))
+
+
+$env:EDITOR = 'nvim'
+$alias:vim  = 'nvim'
+$alias:cz   = 'chezmoi'
+$env:TERM   = 'xterm-256color'
+
 
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
@@ -45,10 +55,17 @@ function load_azdevops() {
   $env:PERSONAL_ACCESS_TOKEN="$devops_token"
 }
 
+function auto {
+  Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
+  Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
+  Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
+
+}
 
 function tmux_sessionizer() {
   $selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
-  $selected_name=$(basename "$selected" | tr . _)
+  # $selected_name=$(basename "$selected" | tr . _)
+  $selected_name=$(Split-Path $namearray -Leaf).Replace(".","_")
   $arguments = "new -s $selected_name -c $selected"
   $tmux_running=Invoke-Expression "pgrep tmux"
 
@@ -57,6 +74,7 @@ function tmux_sessionizer() {
     Invoke-Expression "tmux $arguments"
     return
   }
+
 
   # There is at least a tmux server running
   if(!$env:TMUX) {
@@ -90,4 +108,49 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+l' -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
-$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
+
+# Stolen and modified from https://github.com/PowerShell/PSReadLine/blob/master/PSReadLine/SamplePSReadLineProfile.ps1
+# F1 for help on the command line - naturally
+Set-PSReadLineKeyHandler -Key F1 `
+  -BriefDescription CommandHelp `
+  -LongDescription 'Open the help window for the current command' `
+  -ScriptBlock {
+  param($key, $arg)
+
+  $ast = $null
+  $tokens = $null
+  $errors = $null
+  $cursor = $null
+  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$ast, [ref]$tokens, [ref]$errors, [ref]$cursor)
+
+  $commandAst = $ast.FindAll( {
+      $node = $args[0]
+      $node -is [CommandAst] -and
+      $node.Extent.StartOffset -le $cursor -and
+      $node.Extent.EndOffset -ge $cursor
+    }, $true) | Select-Object -Last 1
+
+  if ($commandAst -ne $null) {
+    $commandName = $commandAst.GetCommandName()
+    if ($commandName -ne $null) {
+      $command = $ExecutionContext.InvokeCommand.GetCommand($commandName, 'All')
+      if ($command -is [Management.Automation.AliasInfo]) {
+        $commandName = $command.ResolvedCommandName
+      }
+
+      if ($commandName -ne $null) {
+        #First try online
+        try {
+          Get-Help $commandName -Online -ErrorAction Stop
+        } catch [InvalidOperationException] {
+          if ($PSItem -notmatch 'The online version of this Help topic cannot be displayed') {
+            throw 
+          }
+          Get-Help $CommandName -ShowWindow
+        }
+      }
+    }
+  }
+}
+
+#$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression

@@ -18,11 +18,12 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 13
 config.cell_width = 1.0
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" }
+end
 config.window_background_opacity = 0.95
 config.initial_cols = 140
 config.initial_rows = 40
-config.hide_tab_bar_if_only_one_tab = true
-config.use_fancy_tab_bar = true
 config.enable_scroll_bar = true
 config.scrollback_lines = 5000
 config.hyperlink_rules = {
@@ -64,5 +65,23 @@ config.hyperlink_rules = {
 	},
 }
 
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = true
+config.tab_max_width = 25
+config.show_tab_index_in_tab_bar = false
+config.switch_to_last_active_tab_when_closing_tab = true
+config.window_close_confirmation = "NeverPrompt"
+config.window_frame = {
+	active_titlebar_bg = "#090909",
+	font_size = 9,
+}
+config.inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 }
+config.window_padding = {
+	left = 5,
+	right = 10,
+	top = 12,
+	bottom = 7,
+}
 -- and finally, return the configuration to wezterm
 return config
