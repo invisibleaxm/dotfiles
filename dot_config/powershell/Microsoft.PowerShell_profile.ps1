@@ -5,7 +5,7 @@ try {
 }
 
 
-if([Environment]::OSVersion -contains "Win") {
+if([Environment]::OSVersion -match "Win") {
   & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_lean.omp.json" --print) -join "`n"))
 
 } else {
