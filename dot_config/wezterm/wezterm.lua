@@ -13,10 +13,10 @@ config.term = "wezterm"
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 -- config.color_scheme = "Batman"
-config.color_scheme = "AdventureTime"
---config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "AdventureTime"
+config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 11
+config.font_size = 13
 config.cell_width = 1.0
 config.window_background_opacity = 0.95
 config.initial_cols = 140
