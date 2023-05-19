@@ -1,5 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local keybindings = require("key-bindings")
+
 -- This table will hold the configuration.
 local config = {}
 -- In newer versions of wezterm, use the config_builder which will
@@ -14,6 +16,7 @@ config.term = "wezterm"
 -- config.color_scheme = "AdventureTime"
 -- config.color_scheme = "Batman"
 -- config.color_scheme = "AdventureTime"
+config.keys = keybindings
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 13
