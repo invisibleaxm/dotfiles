@@ -2,22 +2,22 @@ local wezterm = require("wezterm")
 
 return {
 	{
-		key = [[\]],
+		key = [[|]],
 		mods = "CTRL|ALT",
 		action = wezterm.action({
 			SplitHorizontal = { domain = "CurrentPaneDomain" },
 		}),
 	},
 	{
-		key = [[\]],
-		mods = "CTRL",
+		key = [[-]],
+		mods = "CTRL|ALT",
 		action = wezterm.action({
 			SplitVertical = { domain = "CurrentPaneDomain" },
 		}),
 	},
 	{
 		key = "q",
-		mods = "CTRL",
+		mods = "CTRL|ALT",
 		action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
 	},
 	{
@@ -62,19 +62,19 @@ return {
 	},
 	{ -- browser-like bindings for tabbing
 		key = "t",
-		mods = "CTRL",
+		mods = "CTRL|ALT",
 		action = wezterm.action({ SpawnTab = "DefaultDomain" }),
 	},
 	{
 		key = "t",
-		mods = "CTRL|SHIFT",
+		mods = "CTRL|ALT|SHIFT",
 		action = wezterm.action.SpawnTab({
 			DomainName = "WSL:Ubuntu",
 		}),
 	},
 	{
 		key = "w",
-		mods = "CTRL",
+		mods = "CTRL|ALT",
 		action = wezterm.action({ CloseCurrentTab = { confirm = false } }),
 	},
 	{
@@ -87,37 +87,37 @@ return {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action({ ActivateTabRelative = -1 }),
 	}, -- standard copy/paste bindings
-	{
-		key = "x",
-		mods = "CTRL",
-		action = "ActivateCopyMode",
-	},
-	{
-		key = "v",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action({ PasteFrom = "Clipboard" }),
-	},
-	{
-		key = "c",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }),
-	},
-	{
-		key = "F",
-		mods = "SHIFT|CTRL",
-		action = wezterm.action.Search({ CaseInSensitiveString = "" }),
-	},
-	{
-		key = "x",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action_callback(function(win, pane)
-			wezterm.background_child_process({
-				"pwsh",
-				"-c",
-				"x11",
-			})
-		end),
-	},
-	{ key = "t", mods = "ALT", action = wezterm.action.ShowTabNavigator },
-	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+	-- {
+	-- 	key = "x",
+	-- 	mods = "CTRL",
+	-- 	action = "ActivateCopyMode",
+	-- },
+	-- {
+	-- 	key = "v",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = wezterm.action({ PasteFrom = "Clipboard" }),
+	-- },
+	-- {
+	-- 	key = "c",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }),
+	-- },
+	-- {
+	-- 	key = "F",
+	-- 	mods = "SHIFT|CTRL",
+	-- 	action = wezterm.action.Search({ CaseInSensitiveString = "" }),
+	-- },
+	-- {
+	-- 	key = "x",
+	-- 	mods = "CTRL|SHIFT",
+	-- 	action = wezterm.action_callback(function(win, pane)
+	-- 		wezterm.background_child_process({
+	-- 			"pwsh",
+	-- 			"-c",
+	-- 			"x11",
+	-- 		})
+	-- 	end),
+	-- },
+	-- { key = "t", mods = "CTRL|ALT", action = wezterm.action.ShowTabNavigator },
+	--	{ key = "l", mods = "CTRL|ALT", action = wezterm.action.ShowLauncher },
 }
