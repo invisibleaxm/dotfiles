@@ -16,5 +16,6 @@ return {
 	--	{ mods = mod, key = "C", action = act.CopyTo("ClipboardAndPrimarySelection") },
 	--	{ mods = mod, key = "l", action = wezterm.action({ ActivateTabRelative = 1 }) },
 	--	{ mods = mod, key = "h", action = wezterm.action({ ActivateTabRelative = -1 }) },
-	{ mods = mod, key = "d", action = wezterm.action.ShowDebugOverlay },
+	-- CTRL-SHIFT-l activates the debug overlay
+	{ key = "L", mods = mod, action = wezterm.action.ShowDebugOverlay },
 }
