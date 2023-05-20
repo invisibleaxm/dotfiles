@@ -18,4 +18,5 @@ return {
 	--	{ mods = mod, key = "h", action = wezterm.action({ ActivateTabRelative = -1 }) },
 	-- CTRL-SHIFT-l activates the debug overlay
 	{ key = "L", mods = "LEADER|SHIFT", action = wezterm.action.ShowDebugOverlay },
+	{ key = "1", mods = mod, action = wezterm.action.ActivateTab(0) },
 }
