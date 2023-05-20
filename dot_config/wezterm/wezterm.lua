@@ -15,7 +15,8 @@ config.term = "wezterm"
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 -- config.color_scheme = "Batman"
--- config.color_scheme = "AdventureTime"
+-- config.color_scheme =
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = keybindings
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("FiraCode Nerd Font")
