@@ -8,7 +8,7 @@ return {
 	{ mods = mod, key = "j", action = act.ActivatePaneDirection("Down") },
 	{ mods = mod, key = "l", action = act.ActivatePaneDirection("Right") },
 	{ mods = mod, key = "h", action = act.ActivatePaneDirection("Left") },
-	{ mods = mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+	{ mods = "LEADER|CTRL", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER|SHIFT", key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = mod, key = "-", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	--	{ mods = mod, key = "M", action = act.TogglePaneZoomState },
