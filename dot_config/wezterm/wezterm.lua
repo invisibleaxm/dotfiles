@@ -16,6 +16,7 @@ config.term = "wezterm"
 -- config.color_scheme = "AdventureTime"
 -- config.color_scheme = "Batman"
 -- config.color_scheme =
+config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = keybindings
 config.color_scheme = "Catppuccin Mocha"
