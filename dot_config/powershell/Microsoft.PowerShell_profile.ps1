@@ -19,6 +19,7 @@ $env:EDITOR = 'nvim'
 $alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
 $env:TERM   = 'xterm-256color'
+$env:SHELL  = $(which pwsh)
 
 
 Set-PSReadLineOption -PredictionSource History
@@ -76,15 +77,15 @@ function auto {
 function tmux_sessionizer() {
   $selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
   $selected_name=$(basename "$selected" | tr . _)
-  $arguments = "new -s $selected_name -c $selected"
-  $tmux_running=Invoke-Expression "pgrep tmux"
+  $arguments = "-L pwsh new -s $selected_name -c $selected"
+#  $arguments = "new -s $selected_name -c $selected"
+  $tmux_running=$(pgrep tmux)
 
   # If there is no tmux server running create the session
   if(!$tmux_running){
     Invoke-Expression "tmux $arguments"
     return
   }
-
 
   # There is at least a tmux server running
   if(!$env:TMUX) {
@@ -98,9 +99,8 @@ function tmux_sessionizer() {
 
   $tmux_has_sessions = Invoke-Expression "tmux has -t $session_name > /dev/null 2>&1"
   if(!  $tmux_has_sessions) {
-    $argumentss+=" -d"
+    $arguments +=" -d"
     Invoke-Expression "tmux $arguments"
-    return
   }
   $arguments="switchc -t $session_name"
   Invoke-Expression "tmux $arguments"

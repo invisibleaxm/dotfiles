@@ -74,7 +74,7 @@ format = "$symbol "
 [os.symbols]
 Windows = " "
 Macos = ""
-Linux = " "
+Ubuntu = " "
 
 [azure]
 disabled = false
