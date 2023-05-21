@@ -11,6 +11,8 @@ return {
 	{ mods = "LEADER|CTRL", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
   { mods = "SUPER", key = "c", action = act.CopyTo="Clipboard"},
   { mods = "SUPER", key = "v", action = act.PasteFrom="Clipboard"},
+  { mods = "CTRL|SHIFT", key = "c", action = act.CopyTo="Clipboard"},
+  { mods = "CTRL|SHIFT", key = "v", action = act.PasteFrom="Clipboard"},
 	{ mods = "LEADER|SHIFT", key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = mod, key = "-", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	--	{ mods = mod, key = "M", action = act.TogglePaneZoomState },
