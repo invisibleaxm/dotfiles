@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local keybindings = require("key-bindings")
+local act = wezterm.action
 
 -- This table will hold the configuration.
 local config = {}
@@ -88,5 +89,32 @@ config.window_padding = {
 	top = 12,
 	bottom = 7,
 }
+
+config.mouse_bindings = {
+	-- Right click sends "woot" to the terminal
+	{
+		event = { Down = { streak = 1, button = "Right" } },
+		mods = "NONE",
+		action = act.PasteFrom("PrimarySelection"),
+	},
+
+	-- Change the default click behavior so that it only selects
+	-- text and doesn't open hyperlinks
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = act.CompleteSelection("ClipboardAndPrimarySelection"),
+	},
+
+	-- and make CTRL-Click open hyperlinks
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = act.OpenLinkAtMouseCursor,
+	},
+	-- NOTE that binding only the 'Up' event can give unexpected behaviors.
+	-- Read more below on the gotcha of binding an 'Up' event only.
+}
+
 -- and finally, return the configuration to wezterm
 return config
