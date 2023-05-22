@@ -21,7 +21,8 @@ config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = keybindings
 -- config.color_scheme = "Catppuccin Mocha"
-config.color_scheme = "Batman"
+-- config.color_scheme = "Batman"
+config.color_scheme = "Tango Dark"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 13
 config.cell_width = 1.0
