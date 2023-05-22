@@ -2,12 +2,12 @@ try {
   Import-Module -Name "PSReadLine" -ErrorAction Ignore
   Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
   Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
+  Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
 } catch {
 }
 
 <#
 if([Environment]::OSVersion -match "Win") {
-  & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_lean.omp.json" --print) -join "`n"))
 
 } else {
   oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
@@ -65,7 +65,6 @@ function load_azdevops() {
 
 function auto {
   Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
-  Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
   Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
   $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
   if (Test-Path($ChocolateyProfile)) {
@@ -165,5 +164,9 @@ Set-PSReadLineKeyHandler -Key F1 `
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 #$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
-Invoke-Expression (&starship init powershell)
+try {
+  Invoke-Expression (&starship init powershell)
+} catch {
+  & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_lean.omp.json" --print) -join "`n"))
+}
 
