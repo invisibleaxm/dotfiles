@@ -22,8 +22,6 @@ HISTFILE=~/.zsh_history
 # export LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
 # #Bash-completion like feature
-autoload -Uz compinit
-compinit
 
 #Key bindings for home and end buttons (beggining and end of line)
 bindkey '\e[H'    beginning-of-line
@@ -56,9 +54,9 @@ else #ubuntu section
     zsh-dircolors-solarized
   #  kubectl
     zsh-autosuggestions
-  #  zsh-syntax-highlighting
+    zsh-syntax-highlighting
   #  fast-syntax-highlighting
-  #  zsh-autocomplete
+    zsh-autocomplete
   #  colored-man-pages
     ubuntu
     virtualenv
@@ -74,7 +72,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -Uz load_azdevops tmux_sessionizer
 bindkey -s ^f "tmux_sessionizer\n"
 
-alias gitm="git checkout mainr"
+alias gitm="git checkout main"
 
 [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
 [[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
@@ -87,6 +85,11 @@ alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
 alias cls="clear"
 eval $(thefuck --alias)
+
+autoload -Uz compinit
+compinit
+
+zstyle '*:compinit' arguments -D -i -u -C -w
 
 source $ZSH/oh-my-zsh.sh
 #Star Ship
