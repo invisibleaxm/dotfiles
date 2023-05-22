@@ -19,7 +19,7 @@ $env:EDITOR = 'nvim'
 $alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
 $env:TERM   = 'xterm-256color'
-$env:SHELL  = $(which pwsh)
+$env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
 
 
 Set-PSReadLineOption -PredictionSource History
@@ -27,7 +27,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
 
-## Helper functions 
+## Helper functions
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
   [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
@@ -78,7 +78,7 @@ function tmux_sessionizer() {
   $selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
   $selected_name=$(basename "$selected" | tr . _)
   $arguments = "-L pwsh new -s $selected_name -c $selected"
-#  $arguments = "new -s $selected_name -c $selected"
+  #  $arguments = "new -s $selected_name -c $selected"
   $tmux_running=$(pgrep tmux)
 
   # If there is no tmux server running create the session
@@ -106,13 +106,13 @@ function tmux_sessionizer() {
   Invoke-Expression "tmux $arguments"
 }
 
-Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock { 
+Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
   [Microsoft.PowerShell.PSConsoleReadLine]::Insert('tmux_sessionizer')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
-Set-PSReadLineKeyHandler -Chord 'Ctrl+l' -ScriptBlock { 
+Set-PSReadLineKeyHandler -Chord 'Ctrl+l' -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
   [Microsoft.PowerShell.PSConsoleReadLine]::Insert('load_azdevops')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
@@ -154,7 +154,7 @@ Set-PSReadLineKeyHandler -Key F1 `
           Get-Help $commandName -Online -ErrorAction Stop
         } catch [InvalidOperationException] {
           if ($PSItem -notmatch 'The online version of this Help topic cannot be displayed') {
-            throw 
+            throw
           }
           Get-Help $CommandName -ShowWindow
         }
