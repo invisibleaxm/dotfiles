@@ -43,8 +43,9 @@ if [[ `uname` == "Darwin" ]]; then
   )
 else #ubuntu section
 
+  export LOCAL_BIN=$HOME/.local/bin
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-  export PATH="$PATH:$BREW_HOME"
+  export PATH="$PATH:$LOCAL_BIN:$BREW_HOME"
   plugins=(
     vi-mode
     fd

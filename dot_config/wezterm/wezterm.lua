@@ -11,7 +11,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.term = "wezterm"
+-- config.term = "wezterm" -- not sure if I need this
 -- This is where you actually apply your config choices
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
@@ -20,7 +20,8 @@ config.term = "wezterm"
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = keybindings
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Batman"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 13
 config.cell_width = 1.0
