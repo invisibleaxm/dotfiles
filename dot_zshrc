@@ -63,6 +63,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 autoload -Uz load_azdevops tmux_sessionizer
 bindkey -s ^f "tmux_sessionizer\n"
+bindkey -s ^l "load_azdevops\n"
 
 alias gitm="git checkout main"
 
