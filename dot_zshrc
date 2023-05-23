@@ -48,7 +48,7 @@ else #ubuntu section
     zsh-autocomplete
 #    ubuntu
 #    virtualenv
-    fast-syntax-highlighting
+    # fast-syntax-highlighting
   #  colored-man-pages
   #  kubectl
   #  pyenv
@@ -75,6 +75,11 @@ alias ll="ls -ltra"
 alias cls="clear"
 eval $(thefuck --alias)
 #export FZF_PREVIEW_ADVANCED=true
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+#this would bind ctrl + space to accept the current suggestion.
+bindkey '^ ' autosuggest-accept
 
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
