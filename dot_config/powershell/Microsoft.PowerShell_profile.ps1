@@ -24,7 +24,7 @@ $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
 
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -EditMode Vi
 
 
 ## Helper functions
