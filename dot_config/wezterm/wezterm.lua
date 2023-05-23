@@ -11,12 +11,11 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- config.term = "wezterm" -- not sure if I need this
+config.term = "wezterm" -- not sure if I need this
 -- This is where you actually apply your config choices
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 -- config.color_scheme = "Batman"
--- config.color_scheme =
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = keybindings
@@ -41,21 +40,18 @@ config.hyperlink_rules = {
 		regex = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
 		format = "$0",
 	},
-
 	-- linkify email addresses
 	-- Compiled-in default. Used if you don't specify any hyperlink_rules.
 	{
 		regex = [[\b\w+@[\w-]+(\.[\w-]+)+\b]],
 		format = "mailto:$0",
 	},
-
 	-- file:// URI
 	-- Compiled-in default. Used if you don't specify any hyperlink_rules.
 	{
 		regex = [[\bfile://\S*\b]],
 		format = "$0",
 	},
-
 	-- Linkify things that look like URLs with numeric addresses as hosts.
 	-- E.g. http://127.0.0.1:8000 for a local development server,
 	-- or http://192.168.1.1 for the web interface of many routers.
@@ -99,7 +95,6 @@ config.mouse_bindings = {
 		mods = "NONE",
 		action = act.PasteFrom("PrimarySelection"),
 	},
-
 	-- Change the default click behavior so that it only selects
 	-- text and doesn't open hyperlinks
 	{
@@ -107,7 +102,6 @@ config.mouse_bindings = {
 		mods = "NONE",
 		action = act.CompleteSelection("ClipboardAndPrimarySelection"),
 	},
-
 	-- and make CTRL-Click open hyperlinks
 	{
 		event = { Up = { streak = 1, button = "Left" } },
@@ -117,6 +111,5 @@ config.mouse_bindings = {
 	-- NOTE that binding only the 'Up' event can give unexpected behaviors.
 	-- Read more below on the gotcha of binding an 'Up' event only.
 }
-
 -- and finally, return the configuration to wezterm
 return config
