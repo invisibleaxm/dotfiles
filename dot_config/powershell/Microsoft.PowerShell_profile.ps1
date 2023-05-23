@@ -14,9 +14,17 @@ if([Environment]::OSVersion -match "Win") {
 }
 #>
 
+$osver = [Environment]::OSVersion.Version.Major
+
 $env:environment = "dev"
-$env:EDITOR = 'nvim'
-$alias:vim  = 'nvim'
+if($osver -eq 10 ) {
+
+  $env:EDITOR = 'vim'
+} else {
+
+  $env:EDITOR = 'nvim'
+  $alias:vim  = 'nvim'
+}
 $alias:cz   = 'chezmoi'
 $env:TERM   = 'xterm-256color'
 $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
@@ -24,7 +32,7 @@ $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
 
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -EditMode Windows # alternative are Vi and Emacs
 
 
 ## Helper functions
