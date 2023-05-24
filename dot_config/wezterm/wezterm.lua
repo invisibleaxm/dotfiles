@@ -22,7 +22,8 @@ config.keys = keybindings
 config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Batman"
 -- config.color_scheme = "Tango Dark"
-config.font = wezterm.font("FiraCode Nerd Font")
+--config.font = wezterm.font("FiraCode Nerd Font")
+config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.font_size = 12
 config.cell_width = 0.95
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
