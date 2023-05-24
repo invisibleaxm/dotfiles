@@ -24,7 +24,7 @@ config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Tango Dark"
 --config.font = wezterm.font("FiraCode Nerd Font")
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
-config.font_size = 13
+config.font_size = 14
 -- config.cell_width = 0.95
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" }
