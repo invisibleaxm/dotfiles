@@ -13,18 +13,15 @@ if([Environment]::OSVersion -match "Win") {
   oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
 }
 #>
-
+$platform = [Environment]::OSVersion.Platform
 $osver = [Environment]::OSVersion.Version.Major
 
 $env:environment = "dev"
-if($osver -eq 10 ) {
-
-  $env:EDITOR = 'vim'
-} else {
-
-  $env:EDITOR = 'nvim'
-  $alias:vim  = 'nvim'
+if($platform -eq "Win32NT" -and $osver -eq 10 ) { 
+  $env:NVIM_APPNAME = 'vanilla'
 }
+$env:EDITOR = 'nvim'
+$alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
 $env:TERM   = 'xterm-256color'
 $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
