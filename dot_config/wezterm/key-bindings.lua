@@ -33,4 +33,5 @@ return {
 	{ key = "9", mods = "ALT", action = wezterm.action.ActivateTab(-1) },
 	{ key = "f", mods = mod, action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ key = "n", mods = "LEADER|CTRL", action = wezterm.action.SpawnWindow },
+	{ key = "t", mods = "LEADER|CTRL", action = wezterm.action.SpawnTab },
 }
