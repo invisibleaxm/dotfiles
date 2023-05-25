@@ -31,6 +31,6 @@ return {
 	{ key = "7", mods = "ALT", action = wezterm.action.ActivateTab(6) },
 	{ key = "8", mods = "ALT", action = wezterm.action.ActivateTab(7) },
 	{ key = "9", mods = "ALT", action = wezterm.action.ActivateTab(-1) },
-	{ key = "f", mods = mod, action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS|WINDOWS" }) },
+	{ key = "f", mods = mod, action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS|WORKSPACES" }) },
 	{ key = "n", mods = mod, action = wezterm.action.SpawnWindow },
 }
