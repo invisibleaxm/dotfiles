@@ -25,7 +25,7 @@ config.color_scheme = "Catppuccin Mocha"
 --config.font = wezterm.font("FiraCode Nerd Font")
 config.font = wezterm.font_with_fallback({
 	"JetBrains Mono",
-	{ family = "Symbols Nerd Font Mono", scale = 0.90 },
+	{ family = "Symbols Nerd Font Mono", scale = 0.75 },
 })
 config.font_size = 14
 -- config.cell_width = 0.95
