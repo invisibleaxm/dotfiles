@@ -31,4 +31,5 @@ return {
 	{ key = "7", mods = mod, action = wezterm.action.ActivateTab(6) },
 	{ key = "8", mods = mod, action = wezterm.action.ActivateTab(7) },
 	{ key = "9", mods = mod, action = wezterm.action.ActivateTab(-1) },
+	{ key = "f", mods = mod, action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
 }
