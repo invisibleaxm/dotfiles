@@ -23,7 +23,7 @@ config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Batman"
 -- config.color_scheme = "Tango Dark"
 --config.font = wezterm.font("FiraCode Nerd Font")
-config.font = wezterm.font_with_failback({
+config.font = wezterm.font_with_fallback({
 	"FiraCode",
 	{ family = "Symbols Nerd Font Mono", scale = 0.70 },
 })
