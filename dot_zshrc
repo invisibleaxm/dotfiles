@@ -63,7 +63,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 autoload -Uz load_azdevops wezterm_sessionizer
 bindkey -s ^l "load_azdevops\n"
-bindkey -s ^w "wezterm_sessionizer\n"
+bindkey -s ^f "wezterm_sessionizer\n"
 
 alias gitm="git checkout main"
 
