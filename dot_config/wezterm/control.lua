@@ -94,7 +94,7 @@ local keys = {
 	{ key = "n", mods = "LEADER|CTRL", action = act.ActivateTabRelative(1) },
 	-- { key = "P",  mods = "LEADER",      action = action_project_switcher, },
 	--  { key = "P",  mods = "LEADER|SHIFT", action = act.ActivateCommandPalette },
-	-- { key = "p", mods = "LEADER",      action = act.EmitEvent 'switch-workspace-prev' },
+	{ key = "L", mods = "LEADER", action = act.EmitEvent("switch-workspace-prev") },
 
 	{
 		key = "W",
@@ -131,10 +131,10 @@ local keys = {
 	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
 	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
-	{ key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
-	{ key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
-	{ key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
-	{ key = "L", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
+	-- { key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
+	-- { key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
+	-- { key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
+	-- { key = "L", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
 	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 	{ key = "Z", mods = "LEADER", action = act.TogglePaneZoomState },
