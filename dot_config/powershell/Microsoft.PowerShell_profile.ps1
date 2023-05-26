@@ -13,15 +13,13 @@ if([Environment]::OSVersion -match "Win") {
   oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
 }
 #>
-
-$osver = [Environment]::OSVersion.Version.Major
+#see wikipedia for build numbers: https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
+$osbuild = [Enironment]::OSVersion.Version.Build
 
 $env:environment = "dev"
-if($osver -eq 10 ) {
-
+if($osbuild -lt 2200 ) {
   $env:EDITOR = 'vim'
 } else {
-
   $env:EDITOR = 'nvim'
   $alias:vim  = 'nvim'
 }
@@ -81,36 +79,10 @@ function auto {
 
 }
 
-function tmux_sessionizer() {
-  $selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
-  $selected_name=$(basename "$selected" | tr . _)
-  $arguments = "-L pwsh new -s $selected_name -c $selected"
-  #  $arguments = "new -s $selected_name -c $selected"
-  $tmux_running=$(pgrep tmux)
-
-  # If there is no tmux server running create the session
-  if(!$tmux_running){
-    Invoke-Expression "tmux $arguments"
-    return
-  }
-
-  # There is at least a tmux server running
-  if(!$env:TMUX) {
-    $arguments += " -A"
-    Invoke-Expression "tmux $arguments"
-    return
-  }
-  # You're already inside tmux => [ -n "$TMUX" ] should be true
-  # If session doesn't exist create it and then switch to it
-  $session_name=$selected_name
-
-  $tmux_has_sessions = Invoke-Expression "tmux has -t $session_name > /dev/null 2>&1"
-  if(!  $tmux_has_sessions) {
-    $arguments +=" -d"
-    Invoke-Expression "tmux $arguments"
-  }
-  $arguments="switchc -t $session_name"
-  Invoke-Expression "tmux $arguments"
+function wezterm_sessionizer() {
+  (fd . $HOME/dev/personal $HOME/dev/work --min-depth 1 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
+  Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
+  Write-Output "Successfully loaded projects on $HOME/.projects"
 }
 
 Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
