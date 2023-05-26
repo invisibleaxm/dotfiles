@@ -64,7 +64,8 @@ zsh_indicator = "  "
 powershell_indicator = " "
 cmd_indicator = " "
 unknown_indicator = 'mystery shell'
-style = 'cyan bold'
+# style = 'cyan bold'
+style = 'white bold'
 disabled = false
 
 [os]
