@@ -61,11 +61,11 @@ style = "bright-black"
 fish_indicator = ''
 # powershell_indicator = '_'
 zsh_indicator = "  "
-powershell_indicator = " "
+# powershell_indicator = " "
+powershell_indicator = "pwsh"
 cmd_indicator = " "
 unknown_indicator = 'mystery shell'
-# style = 'cyan bold'
-style = 'white bold'
+style = 'cyan bold'
 disabled = false
 
 [os]
