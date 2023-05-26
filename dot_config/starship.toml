@@ -60,7 +60,8 @@ style = "bright-black"
 [shell]
 fish_indicator = ''
 # powershell_indicator = '_'
-zsh_indicator = "  "
+# zsh_indicator = "  "
+zsh_indicator = "zsh"
 # powershell_indicator = " "
 powershell_indicator = "pwsh"
 cmd_indicator = " "
