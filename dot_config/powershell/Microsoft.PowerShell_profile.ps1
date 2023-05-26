@@ -18,11 +18,10 @@ $osbuild = [Environment]::OSVersion.Version.Build
 
 $env:environment = "dev"
 if($osbuild -lt 2200 ) {
-  $env:EDITOR = 'vim'
-} else {
-  $env:EDITOR = 'nvim'
-  $alias:vim  = 'nvim'
+  $NVIM_APPNAME = "vanilla" #prevent from loading more advanced neovim for windows 10 until i nail the config.
 }
+$env:EDITOR = 'nvim'
+$alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
 $env:TERM   = 'xterm-256color'
 $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
