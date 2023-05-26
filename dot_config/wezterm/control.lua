@@ -27,7 +27,9 @@ end)
 
 local action_project_switcher = wezterm.action_callback(function(window, pane)
 	local choices = {}
-	for _, v in pairs(util.file_lines(os.getenv("HOME") .. "/.projects")) do
+  local homePath = os.getenv("HOME")
+  if homePath == nil then homePath = os.getenv("UserProfile")
+	for _, v in pairs(util.file_lines(homePath .. "/.projects")) do
 		fmt_label = wezterm.format({
 			{ Foreground = { Color = theme.colors.hl_1 } },
 			{ Text = v },
