@@ -1,0 +1,28 @@
+function wezterm_sessionizer() {
+	# Otherwise this will be the default behaviour (you will ask to select the initial folder)
+	# selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
+	# selected_name=$(basename "$selected" | tr . _)
+
+	fd . ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory >$HOME/.projects
+  echo "$HOME/.config/nvim" >> $HOME/.projects
+  echo "Succesfully reloaded projects file at $HOME/.projects"
+	# args=(cli spawn --new-window --workspace $selected_name --cwd $selected)
+
+	# If there is no tmux server running create the session
+	# wezterm "${args[@]}" && return 0
+	# There is at least a tmux server running
+	# If you're not inside tmux either attach to the session or create it:
+	# [ -z "$TMUX" ] && args+=(-A) && tmux "${args[@]}" && return 0
+	#
+	# # You're already inside tmux => [ -n "$TMUX" ] should be true
+	# # If session doesn't exist create it and then switch to it
+	# session_name=${just_name:-$selected_name}
+	# if ! tmux has -t $session_name > /dev/null 2>&1; then
+	# 	args+=(-d)
+	# 	tmux "${args[@]}"
+	# fi
+	# args=(switchc -t $session_name)
+	# tmux "${args[@]}"
+}
+
+wezterm_sessionizer "@$"
