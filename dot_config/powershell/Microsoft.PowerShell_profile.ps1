@@ -1,10 +1,7 @@
-try {
-  Import-Module -Name "PSReadLine" -ErrorAction Ignore
-  Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
-  Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
-  Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
-} catch {
-}
+Import-Module -Name "PSReadLine" -ErrorAction Ignore
+Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
+Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
+Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
 
 <#
 if([Environment]::OSVersion -match "Win") {
