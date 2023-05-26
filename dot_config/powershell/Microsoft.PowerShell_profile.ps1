@@ -14,7 +14,7 @@ if([Environment]::OSVersion -match "Win") {
 }
 #>
 #see wikipedia for build numbers: https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
-$osbuild = [Enironment]::OSVersion.Version.Build
+$osbuild = [Environment]::OSVersion.Version.Build
 
 $env:environment = "dev"
 if($osbuild -lt 2200 ) {
