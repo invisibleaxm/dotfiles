@@ -64,7 +64,7 @@ function module.apply_to_config(config)
 	}
 	config.font = wezterm.font_with_fallback({
 		"JetBrains Mono",
-		{ family = "Symbols Nerd Font Mono", scale = 0.75 },
+		{ family = "Symbols Nerd Font Mono", scale = 0.85 },
 	})
 	config.font_size = 14
 	config.tab_bar_at_bottom = true
