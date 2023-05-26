@@ -87,7 +87,7 @@ function wezterm_sessionizer() {
 
 Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-  [Microsoft.PowerShell.PSConsoleReadLine]::Insert('tmux_sessionizer')
+  [Microsoft.PowerShell.PSConsoleReadLine]::Insert('wezterm_sessionizer')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
