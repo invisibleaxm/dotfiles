@@ -60,8 +60,10 @@ style = "bright-black"
 [shell]
 fish_indicator = ''
 # powershell_indicator = '_'
-zsh_indicator = "  "
-powershell_indicator = " "
+# zsh_indicator = "  "
+zsh_indicator = " zsh"
+# powershell_indicator = " "
+powershell_indicator = " pwsh"
 cmd_indicator = " "
 unknown_indicator = 'mystery shell'
 style = 'cyan bold'

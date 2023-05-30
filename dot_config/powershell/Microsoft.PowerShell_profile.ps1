@@ -1,10 +1,7 @@
-try {
-  Import-Module -Name "PSReadLine" -ErrorAction Ignore
-  Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
-  Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
-  Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
-} catch {
-}
+Import-Module -Name "PSReadLine" -ErrorAction Ignore
+Import-Module -Name "Terminal-Icons" -ErrorAction Ignore -WarningAction Ignore
+Import-Module -Name "PSFzf" -ErrorAction Ignore -WarningAction Ignore
+Import-Module -Name "posh-git" -ErrorAction Ignore -WarningAction Ignore
 
 <#
 if([Environment]::OSVersion -match "Win") {
@@ -13,12 +10,12 @@ if([Environment]::OSVersion -match "Win") {
   oh-my-posh init pwsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_lean.omp.json" | Invoke-Expression
 }
 #>
-$platform = [Environment]::OSVersion.Platform
-$osver = [Environment]::OSVersion.Version.Major
+#see wikipedia for build numbers: https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
+$osbuild = [Environment]::OSVersion.Version.Build
 
 $env:environment = "dev"
-if($platform -eq "Win32NT" -and $osver -eq 10 ) { 
-  $env:NVIM_APPNAME = 'vanilla'
+if($osbuild -lt 2200 ) {
+  $NVIM_APPNAME = "vanilla" #prevent from loading more advanced neovim for windows 10 until i nail the config.
 }
 $env:EDITOR = 'nvim'
 $alias:vim  = 'nvim'
@@ -78,41 +75,15 @@ function auto {
 
 }
 
-function tmux_sessionizer() {
-  $selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
-  $selected_name=$(basename "$selected" | tr . _)
-  $arguments = "-L pwsh new -s $selected_name -c $selected"
-  #  $arguments = "new -s $selected_name -c $selected"
-  $tmux_running=$(pgrep tmux)
-
-  # If there is no tmux server running create the session
-  if(!$tmux_running){
-    Invoke-Expression "tmux $arguments"
-    return
-  }
-
-  # There is at least a tmux server running
-  if(!$env:TMUX) {
-    $arguments += " -A"
-    Invoke-Expression "tmux $arguments"
-    return
-  }
-  # You're already inside tmux => [ -n "$TMUX" ] should be true
-  # If session doesn't exist create it and then switch to it
-  $session_name=$selected_name
-
-  $tmux_has_sessions = Invoke-Expression "tmux has -t $session_name > /dev/null 2>&1"
-  if(!  $tmux_has_sessions) {
-    $arguments +=" -d"
-    Invoke-Expression "tmux $arguments"
-  }
-  $arguments="switchc -t $session_name"
-  Invoke-Expression "tmux $arguments"
+function wezterm_sessionizer() {
+  (fd . $HOME/dev/personal $HOME/dev/work --min-depth 1 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
+  Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
+  Write-Output "Successfully loaded projects on $HOME/.projects"
 }
 
 Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-  [Microsoft.PowerShell.PSConsoleReadLine]::Insert('tmux_sessionizer')
+  [Microsoft.PowerShell.PSConsoleReadLine]::Insert('wezterm_sessionizer')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
