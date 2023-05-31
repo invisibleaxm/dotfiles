@@ -31,8 +31,8 @@ scheme.tab_bar = {
 	-- background = colors.bg,
 	background = "none",
 	new_tab = {
-		-- bg_color = colors.bg,
-		bg_color = "none",
+		bg_color = colors.bg,
+		-- bg_color = "none",
 		fg_color = colors.hl_2,
 	},
 	active_tab = {
