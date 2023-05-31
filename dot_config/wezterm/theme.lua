@@ -12,7 +12,8 @@ local colors = {}
 local selected_scheme = "Tango (terminal.sexy)"
 local scheme = wezterm.get_builtin_color_schemes()[selected_scheme]
 
-colors.active_bg = scheme.selection_bg
+-- colors.active_bg = scheme.selection_bg
+colors.active_bg = scheme.background
 colors.active_fg = scheme.ansi[6]
 colors.bg = scheme.background
 colors.hl_1 = scheme.ansi[5]
