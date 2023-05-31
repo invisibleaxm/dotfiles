@@ -8,7 +8,8 @@ local colors = {}
 --"Batman"
 --"Tango Dark"
 -- "tokyonight_night";
-local selected_scheme = "Catppuccin Mocha"
+-- local selected_scheme = "Catppuccin Mocha"
+local selected_scheme = "Tango (terminal.sexy)"
 local scheme = wezterm.get_builtin_color_schemes()[selected_scheme]
 
 colors.active_bg = scheme.selection_bg
