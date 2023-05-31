@@ -87,9 +87,9 @@ function module.apply_to_config(config)
 	config.window_close_confirmation = "NeverPrompt"
 	config.window_padding = {
 		left = 5,
-		right = 10,
-		top = 12,
-		bottom = 7,
+		right = 5,
+		top = 5,
+		bottom = 5,
 	}
 end
 
