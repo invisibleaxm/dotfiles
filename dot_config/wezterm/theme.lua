@@ -8,10 +8,12 @@ local colors = {}
 --"Batman"
 --"Tango Dark"
 -- "tokyonight_night";
-local selected_scheme = "Catppuccin Mocha"
+-- local selected_scheme = "Catppuccin Mocha"
+local selected_scheme = "Tango (terminal.sexy)"
 local scheme = wezterm.get_builtin_color_schemes()[selected_scheme]
 
-colors.active_bg = scheme.selection_bg
+-- colors.active_bg = scheme.selection_bg
+colors.active_bg = scheme.background
 colors.active_fg = scheme.ansi[6]
 colors.bg = scheme.background
 colors.hl_1 = scheme.ansi[5]
@@ -30,8 +32,8 @@ scheme.tab_bar = {
 	-- background = colors.bg,
 	background = "none",
 	new_tab = {
-		-- bg_color = colors.bg,
-		bg_color = "none",
+		bg_color = colors.bg,
+		-- bg_color = "none",
 		fg_color = colors.hl_2,
 	},
 	active_tab = {
@@ -66,7 +68,7 @@ function module.apply_to_config(config)
 		"JetBrains Mono",
 		{ family = "Symbols Nerd Font Mono", scale = 0.80 },
 	})
-	config.font_size = 13
+	config.font_size = 11
 	config.tab_bar_at_bottom = true
 	config.tab_max_width = 50
 	config.use_fancy_tab_bar = false
@@ -85,9 +87,9 @@ function module.apply_to_config(config)
 	config.window_close_confirmation = "NeverPrompt"
 	config.window_padding = {
 		left = 5,
-		right = 10,
-		top = 12,
-		bottom = 7,
+		right = 5,
+		top = 5,
+		bottom = 5,
 	}
 end
 

@@ -130,7 +130,7 @@ local keys = {
 	{ key = "|", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
-	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
+	{ key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = false }) },
 	-- { key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
 	-- { key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
 	-- { key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
