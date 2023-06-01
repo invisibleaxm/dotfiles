@@ -41,11 +41,11 @@ scheme.tab_bar = {
 		fg_color = colors.active_fg,
 	},
 	inactive_tab = {
-		bg_color = colors.bg,
+		bg_color = colors.bg, --colors.bg,
 		fg_color = colors.inactive_fg,
 	},
 	inactive_tab_hover = {
-		bg_color = colors.bg,
+		bg_color = "#0b0022", --colors.bg,
 		fg_color = colors.inactive_fg,
 	},
 }

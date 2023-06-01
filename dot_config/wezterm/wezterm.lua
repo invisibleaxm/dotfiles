@@ -18,7 +18,7 @@ config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 -- On windows use powershell instead of cmd
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" }
+	config.default_prog = { "pwsh.exe", "-nologo" }
 end
 -- some defaults inspired from the interwebs
 config.scrollback_lines = 5000
