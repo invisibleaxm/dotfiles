@@ -68,7 +68,12 @@ function module.apply_to_config(config)
 		"JetBrains Mono",
 		{ family = "Symbols Nerd Font Mono", scale = 0.80 },
 	})
-	config.font_size = 11
+
+	if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+		config.font_size = 11
+	else
+		config.font_size = 13
+	end
 	config.tab_bar_at_bottom = true
 	config.tab_max_width = 50
 	config.use_fancy_tab_bar = false
