@@ -2,17 +2,17 @@ function tmux_sessionizer() {
 	just_name=
 	while getopts "n:" opt; do
 		case $opt in
-			n) just_name="$OPTARG" ;;
+		n) just_name="$OPTARG" ;;
 		esac
 	done
 	# if you run the function with `-n the_name` arguments will be these ones:
-	[ -n "$just_name" ] && args=( new -s "$just_name" -c $(pwd) )
+	[ -n "$just_name" ] && args=(new -s "$just_name" -c $(pwd))
 
 	# Otherwise this will be the default behaviour (you will ask to select the initial folder)
 	if [ -z "$just_name" ]; then
-		selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
+		selected=$(fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | echo "~/.config/nvim" | fzf)
 		selected_name=$(basename "$selected" | tr . _)
-		args=( new -s $selected_name -c $selected)
+		args=(new -s $selected_name -c $selected)
 	fi
 
 	tmux_running=$(pgrep tmux)
@@ -22,11 +22,11 @@ function tmux_sessionizer() {
 	# There is at least a tmux server running
 	# If you're not inside tmux either attach to the session or create it:
 	[ -z "$TMUX" ] && args+=(-A) && tmux "${args[@]}" && return 0
-	
+
 	# You're already inside tmux => [ -n "$TMUX" ] should be true
-	# If session doesn't exist create it and then switch to it	
+	# If session doesn't exist create it and then switch to it
 	session_name=${just_name:-$selected_name}
-	if ! tmux has -t $session_name > /dev/null 2>&1; then 
+	if ! tmux has -t $session_name >/dev/null 2>&1; then
 		args+=(-d)
 		tmux "${args[@]}"
 	fi
