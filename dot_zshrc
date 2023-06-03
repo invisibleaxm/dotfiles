@@ -61,8 +61,9 @@ fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 # shell completion
 #fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-autoload -Uz load_azdevops wezterm_sessionizer
+autoload -Uz load_azdevops wezterm_sessionizer sshagent
 bindkey -s ^l "load_azdevops\n"
+bindkey -s ^s "sshagent\n"
 bindkey -s ^f "wezterm_sessionizer\n"
 
 alias gitm="git checkout main"
@@ -91,8 +92,6 @@ autoload -U compinit && compinit
 #Star Ship
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_ed25519
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
