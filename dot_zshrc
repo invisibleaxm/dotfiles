@@ -63,7 +63,7 @@ fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 
 autoload -Uz load_azdevops wezterm_sessionizer sshagent
 bindkey -s ^l "load_azdevops\n"
-bindkey -s ^s "sshagent\n"
+bindkey -s ^g "sshagent\n"
 bindkey -s ^f "wezterm_sessionizer\n"
 
 alias gitm="git checkout main"
