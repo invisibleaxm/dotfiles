@@ -92,7 +92,7 @@ autoload -U compinit && compinit
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_ed25519
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
