@@ -51,7 +51,7 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 
 function unlock_bw_if_locked() {
   if ($env:BW_SESSION) {
-    write-otput 'bw locked - unlocking into a new session'
+    Write-Output 'bw locked - unlocking into a new session'
     $env:BW_SESSION="$(bw unlock --raw)"
   }
 }
