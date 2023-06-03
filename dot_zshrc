@@ -59,7 +59,7 @@ fi
 # Autoload zsh shell functions defined in the function path
 fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 # shell completion
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 autoload -Uz load_azdevops wezterm_sessionizer
 bindkey -s ^l "load_azdevops\n"
