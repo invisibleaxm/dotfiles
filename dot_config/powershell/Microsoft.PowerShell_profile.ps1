@@ -14,9 +14,9 @@ if([Environment]::OSVersion -match "Win") {
 $osbuild = [Environment]::OSVersion.Version.Build
 
 $env:environment = "dev"
-if($osbuild -lt 2200 ) {
-  $NVIM_APPNAME = "vanilla" #prevent from loading more advanced neovim for windows 10 until i nail the config.
-}
+#if($osbuild -lt 2200 ) {
+#  $NVIM_APPNAME = "vanilla" #prevent from loading more advanced neovim for windows 10 until i nail the config.
+#}
 $env:EDITOR = 'nvim'
 $alias:vim  = 'nvim'
 $alias:cz   = 'chezmoi'
