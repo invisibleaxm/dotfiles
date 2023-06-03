@@ -46,7 +46,7 @@ else #ubuntu section
     zsh-autosuggestions
     # zsh-syntax-highlighting this is a little bit of a cpu hog, need to research further
     zsh-autocomplete
-#    ubuntu
+    ubuntu
 #    virtualenv
     # fast-syntax-highlighting
   #  colored-man-pages
