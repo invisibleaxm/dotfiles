@@ -24,7 +24,7 @@ $env:TERM   = 'xterm-256color'
 $env:SHELL  = $(Get-Command pwsh).source#$(which pwsh)
 
 
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource History -ErrorAction SilentlyContinue
 Set-PSReadLineOption -PredictionViewStyle ListView -ErrorAction SilentlyContinue
 Set-PSReadLineOption -EditMode Windows # alternative are Vi and Emacs
 
