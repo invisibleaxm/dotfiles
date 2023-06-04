@@ -10,7 +10,8 @@ function tmux_sessionizer() {
 
 	# Otherwise this will be the default behaviour (you will ask to select the initial folder)
 	if [ -z "$just_name" ]; then
-		selected=$(echo -n "$HOME/.config/nvim\n$( fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory)" | fzf)
+		#selected=$(echo -n "$HOME/.config/nvim\n$( fd . ~ ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory)" | fzf)
+		selected=$(fd . ~/dev/personal ~/dev/work --min-depth 1 --max-depth 1 --type directory | fzf)
 		selected_name=$(basename "$selected" | tr . _)
 		args=(new -s $selected_name -c $selected)
 	fi
