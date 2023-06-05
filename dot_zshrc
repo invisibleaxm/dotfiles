@@ -1,12 +1,13 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 # Disabling oh-my-zsh theme
 ZSH_THEME=""
 
-#vi editing mode
-bindkey -v
+
+zstyle ':omz:update' mode disabled
+# update manually with: omz update
 
 #Setting some history options
 setopt histignorealldups sharehistory
@@ -55,15 +56,42 @@ else #ubuntu section
 #    fzf-zsh-plugin
   )
 fi
-
 source $ZSH/oh-my-zsh.sh
-# Autoload zsh shell functions defined in the function path
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
-# shell completion
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
 
-# autoload -U compinit && compinit
-autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
+# Preferred editor
+export EDITOR=nvim
+
+
+
+# completion config
+zstyle ':completion:*' file-sort access
+# workaround for "do you wish to see all x possibilities" prompt eating input
+zstyle ':completion:*' menu select=long
+# fuzzy matching for completions
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+#zstyle '*:compinit' arguments -D -i -u -C -w
+#zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+# zsh-autocomplete config https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
+# zstyle ':autocomplete:*' list-lines 7
+# zstyle ':autocomplete:*' widget-style menu-select
+# zle -A {.,}history-incremental-search-forward
+# zle -A {.,}history-incremental-search-backward
+# requires fzf to be installed
+# style ':autocomplete:*' fzf-completion yes
+# requires z to be installed
+# zstyle ':autocomplete:*' recent-dirs zsh-z
+
+# auto complete colors
+# zstyle ':completion:*:default' list-colors \
+#   "ow=30;43"
+
+
+# ========
+# keybinds
+# ========
 bindkey -s ^l "^uload_azdevops^M"
 bindkey -s ^g "^usshagent^M"
 bindkey -s ^w "^uwezterm_sessionizer^M"
@@ -72,8 +100,12 @@ bindkey '^ ' autosuggest-accept
 bindkey '^j' autosuggest-accept
 #Make Tab and ShiftTab cycle completions on the command line
 bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-export EDITOR=nvim
+bindkey -v #vi mode
 
+
+# ======
+# alias
+# ======
 alias gitm="git checkout main"
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
 alias vim=nvim
@@ -81,22 +113,37 @@ alias zshconfig="chezmoi edit ~/.zshrc"
 alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
 alias cls="clear"
-eval $(thefuck --alias)
+
+# override zsh-autocomplete
+# bindkey -M menuselect '\r' accept-line
+# bindkey '\0' set-mark-command
+
+autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
+
+# Autoload zsh shell functions defined in the function path
+#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
+# shell completion
+
+# autoload -U compinit && compinit
 #export FZF_PREVIEW_ADVANCED=true
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #this would bind ctrl + space to accept the current suggestion.
-zstyle '*:compinit' arguments -D -i -u -C -w
-zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 #i belineve the line below is achieved via the fzf plugin
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ================================
+# ! source additional config below
+# ================================
 [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
 [[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
 #Star Ship
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
