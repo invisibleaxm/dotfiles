@@ -65,7 +65,7 @@ autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 bindkey -s ^l "load_azdevops\n"
 bindkey -s ^g "sshagent\n"
 bindkey -s ^w "wezterm_sessionizer\n"
-bindkey -s ^f "tmux_sessionizer\n"
+bindkey -s ^f "^utmux_sessionizer^M"
 
 alias gitm="git checkout main"
 
