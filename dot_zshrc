@@ -154,6 +154,22 @@ alias cls="clear"
 autoload -U compinit && compinit
 autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 
+
+case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
+    local term_title () { print -n "\e]0;${(j: :q)@}\a" }
+    precmd () {
+      local DIR="$(print -P '[%c]')"
+      term_title "$DIR" "st"
+    }
+    preexec () {
+      local DIR="$(print -P '[%c]%#')"
+      local CMD="${(j:\n:)${(f)1}}"
+      #term_title "$DIR" "$CMD" use this if you want directory in command, below only prints program name
+	  term_title "$CMD"
+    }
+  ;;
+esac
+
 #this would bind ctrl + space to accept the current suggestion.
 #i belineve the line below is achieved via the fzf plugin
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
