@@ -43,9 +43,9 @@ else #ubuntu section
     # sudo
     # zsh-dircolors-solarized
 
+    zsh-autocomplete
     zsh-autosuggestions
     # zsh-syntax-highlighting this is a little bit of a cpu hog, need to research further
-    zsh-autocomplete
     # ubuntu
 #    virtualenv
     # fast-syntax-highlighting
@@ -63,9 +63,10 @@ source $ZSH/oh-my-zsh.sh
 # ========
 export LANG=en_US.UTF-8 # set preferred language UTF-8
 export EDITOR=nvim # Prefered editor
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 #export FZF_PREVIEW_ADVANCED=true
 
