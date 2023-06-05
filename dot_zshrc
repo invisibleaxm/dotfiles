@@ -15,9 +15,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-#Key bindings for home and end buttons (beggining and end of line)
-bindkey '\e[H'    beginning-of-line
-bindkey '\e[F'    end-of-line
 
 #add python pip folder to path
 export LOCAL_BIN=$HOME/.local/bin
@@ -56,12 +53,19 @@ else #ubuntu section
 #    fzf-zsh-plugin
   )
 fi
+# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 source $ZSH/oh-my-zsh.sh
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor
-export EDITOR=nvim
+# ========
+# exports
+# ========
+export LANG=en_US.UTF-8 # set preferred language UTF-8
+export EDITOR=nvim # Prefered editor
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+#export FZF_PREVIEW_ADVANCED=true
 
 
 
@@ -101,6 +105,19 @@ bindkey '^j' autosuggest-accept
 #Make Tab and ShiftTab cycle completions on the command line
 bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 bindkey -v #vi mode
+# Bindkeys - use sudo showkey -a to get sequences
+# Shift-Left / Shift-Right
+bindkey "^[[1;2D" backward-word
+bindkey "^[[1;2C" forward-word
+# Shift-Up / Shift-Down
+bindkey "^[[1;2A" beginning-of-line
+bindkey "^[[1;2B" end-of-line
+#Key bindings for home and end buttons (beggining and end of line)
+bindkey '\e[H'    beginning-of-line
+bindkey '\e[F'    end-of-line
+# override zsh-autocomplete
+# bindkey -M menuselect '\r' accept-line
+# bindkey '\0' set-mark-command
 
 
 # ======
@@ -114,23 +131,11 @@ alias tmuxconfig="chezmoi edit ~/.tmux.conf"
 alias ll="ls -ltra"
 alias cls="clear"
 
-# override zsh-autocomplete
-# bindkey -M menuselect '\r' accept-line
-# bindkey '\0' set-mark-command
 
+# Force re-completion
+autoload -U compinit && compinit
 autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 
-# Autoload zsh shell functions defined in the function path
-#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-# fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
-# shell completion
-
-# autoload -U compinit && compinit
-#export FZF_PREVIEW_ADVANCED=true
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #this would bind ctrl + space to accept the current suggestion.
 #i belineve the line below is achieved via the fzf plugin
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
