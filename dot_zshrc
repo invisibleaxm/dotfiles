@@ -42,7 +42,7 @@ else #ubuntu section
     # docker
     # sudo
     # zsh-dircolors-solarized
-
+    starship
     zsh-autocomplete
     zsh-autosuggestions
     # zsh-history-substring-search
