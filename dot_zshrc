@@ -162,10 +162,10 @@ autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 # [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
 # [[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
 #Star Ship
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(thefuck --alias)"
 # Fig post block. Keep at the bottom of this file.
+# eval "$(starship init zsh)"
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
 
