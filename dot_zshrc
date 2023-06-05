@@ -123,8 +123,9 @@ bindkey '\e[F'    end-of-line
 # override zsh-autocomplete
 # bindkey -M menuselect '\r' accept-line
 # bindkey '\0' set-mark-command
-bindkey '^ I'   complete-word       # tab          | complete
-bindkey '^ [[Z' autosuggest-accept  # shift + tab  | autosuggest
+# bindkey '^ I'   complete-word       # tab          | complete
+# bindkey '^ [[Z' autosuggest-accept  # shift + tab  | autosuggest
+bindkey '\t\t' autosuggest-accept
 
 
 # ======
