@@ -35,16 +35,18 @@ else #ubuntu section
   export PATH="$PATH:$BREW_HOME"
   plugins=(
     # vi-mode
-    fd
-    fzf
-    git
-    docker
-    sudo
-    zsh-dircolors-solarized
+
+    # fd
+    # fzf
+    # git
+    # docker
+    # sudo
+    # zsh-dircolors-solarized
+
     # zsh-autosuggestions
     # zsh-syntax-highlighting this is a little bit of a cpu hog, need to research further
     zsh-autocomplete
-    ubuntu
+    # ubuntu
 #    virtualenv
     # fast-syntax-highlighting
   #  colored-man-pages
