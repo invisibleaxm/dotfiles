@@ -72,11 +72,11 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 
 # completion config
-zstyle ':completion:*' file-sort access
+# zstyle ':completion:*' file-sort access
 # workaround for "do you wish to see all x possibilities" prompt eating input
-zstyle ':completion:*' menu select=long
+# zstyle ':completion:*' menu select=long
 # fuzzy matching for completions
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
