@@ -23,7 +23,7 @@ export PATH="$PATH:$LOCAL_BIN"
 if [[ `uname` == "Darwin" ]]; then #as we are using fig on mac, we skip some of the completion plugins
   alias dircolors='gdircolors'
   plugins=(
-    vi-mode
+    # vi-mode
     fd
     fzf
     sudo
@@ -34,7 +34,7 @@ else #ubuntu section
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
   export PATH="$PATH:$BREW_HOME"
   plugins=(
-    vi-mode
+    # vi-mode
     fd
     fzf
     git
@@ -104,7 +104,7 @@ bindkey '^ ' autosuggest-accept
 bindkey '^j' autosuggest-accept
 #Make Tab and ShiftTab cycle completions on the command line
 bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-bindkey -v #vi mode
+# bindkey -v #vi mode
 # Bindkeys - use sudo showkey -a to get sequences
 # Shift-Left / Shift-Right
 bindkey "^[[1;2D" backward-word
