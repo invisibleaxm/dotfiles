@@ -41,7 +41,7 @@ else #ubuntu section
     git
     docker
     sudo
-    # zsh-dircolors-solarized
+    zsh-dircolors-solarized
     starship
     zsh-autocomplete
     zsh-autosuggestions
