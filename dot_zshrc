@@ -37,7 +37,7 @@ else #ubuntu section
     vi-mode
 
     fd
-    # fzf
+    fzf
     git
     docker
     sudo
