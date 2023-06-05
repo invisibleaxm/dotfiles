@@ -86,8 +86,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 #this would bind ctrl + space to accept the current suggestion.
 zstyle '*:compinit' arguments -D -i -u -C -w
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#i belineve the line below is achieved via the fzf plugin
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
 [[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
 #Star Ship
