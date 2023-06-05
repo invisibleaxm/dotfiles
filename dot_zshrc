@@ -62,7 +62,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 # shell completion
 
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
 autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 bindkey -s ^l "^uload_azdevops^M"
 bindkey -s ^g "^usshagent^M"
