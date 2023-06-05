@@ -19,6 +19,19 @@ HISTFILE=~/.zsh_history
 #add python pip folder to path
 export LOCAL_BIN=$HOME/.local/bin
 export PATH="$PATH:$LOCAL_BIN"
+
+#TODO: need to figure out which windows paths i really need when running inside wsl2
+# see issue: https://github.com/zsh-users/zsh-syntax-highlighting/issues/790
+# path+=(
+# 	/mnt/c/Users/lesmo/AppData/Local/Microsoft/WindowsApps
+# 	/mnt/c/Users/lesmo/AppData/Local/Programs/Microsoft VS Code/bin
+# 	/mnt/c/Program Files/Docker/Docker/resources/bin
+# 	/mnt/c/ProgramData/DockerDesktop/version-bin
+# 	/mnt/c/WINDOWS
+# )
+
+
+
 #oh-my-zsh plugins
 if [[ `uname` == "Darwin" ]]; then #as we are using fig on mac, we skip some of the completion plugins
   alias dircolors='gdircolors'
