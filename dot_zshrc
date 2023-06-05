@@ -56,20 +56,23 @@ else #ubuntu section
   )
 fi
 
+source $ZSH/oh-my-zsh.sh
 # Autoload zsh shell functions defined in the function path
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 fpath=( ~/.zsh_autoload_functions "${fpath[@]}" )
 # shell completion
 
+autoload -U compinit && compinit
 autoload -Uz load_azdevops wezterm_sessionizer sshagent tmux_sessionizer
 bindkey -s ^l "^uload_azdevops^M"
 bindkey -s ^g "^usshagent^M"
 bindkey -s ^w "^uwezterm_sessionizer^M"
 bindkey -s ^f "^utmux_sessionizer^M"
+bindkey '^ ' autosuggest-accept
+bindkey '^j' autosuggest-accept
+export EDITOR=nvim
 
 alias gitm="git checkout main"
-
-export EDITOR=nvim
 alias kraken='open -na "GitKraken" --args -p "$(git rev-parse --show-toplevel)"'
 alias vim=nvim
 alias zshconfig="chezmoi edit ~/.zshrc"
@@ -82,15 +85,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 #this would bind ctrl + space to accept the current suggestion.
-bindkey '^ ' autosuggest-accept
-bindkey '^j' autosuggest-accept
+zstyle '*:compinit' arguments -D -i -u -C -w
 
-#zstyle '*:compinit' arguments -D -i -u -C -w
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
 [[ -f "$HOME/.fzf/shell/completion.zsh" ]] && builtin source "$HOME/.fzf/shell/completion.zsh"
-source $ZSH/oh-my-zsh.sh
-autoload -U compinit && compinit
 #Star Ship
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
