@@ -83,6 +83,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 #this would bind ctrl + space to accept the current suggestion.
 bindkey '^ ' autosuggest-accept
+bindkey '^j' autosuggest-accept
 
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
