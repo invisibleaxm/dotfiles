@@ -70,6 +70,8 @@ bindkey -s ^w "^uwezterm_sessionizer^M"
 bindkey -s ^f "^utmux_sessionizer^M"
 bindkey '^ ' autosuggest-accept
 bindkey '^j' autosuggest-accept
+#Make Tab and ShiftTab cycle completions on the command line
+bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 export EDITOR=nvim
 
 alias gitm="git checkout main"
@@ -87,6 +89,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #this would bind ctrl + space to accept the current suggestion.
 zstyle '*:compinit' arguments -D -i -u -C -w
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 #i belineve the line below is achieved via the fzf plugin
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f "$HOME/.fzf/shell/key-bindings.zsh" ]] && builtin source "$HOME/.fzf/shell/key-bindings.zsh"
