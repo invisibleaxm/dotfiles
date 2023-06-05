@@ -125,7 +125,9 @@ bindkey '\e[F'    end-of-line
 # bindkey '\0' set-mark-command
 # bindkey '^ I'   complete-word       # tab          | complete
 # bindkey '^ [[Z' autosuggest-accept  # shift + tab  | autosuggest
-bindkey '\t\t' autosuggest-accept
+# bindkey '\t\t' autosuggest-accept
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 
 # ======
