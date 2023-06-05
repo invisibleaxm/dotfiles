@@ -45,6 +45,7 @@ else #ubuntu section
 
     zsh-autocomplete
     zsh-autosuggestions
+    zsh-history-substring-search
     # zsh-syntax-highlighting this is a little bit of a cpu hog, need to research further
     # ubuntu
 #    virtualenv
