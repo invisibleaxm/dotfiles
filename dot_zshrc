@@ -109,7 +109,7 @@ bindkey '^ ' autosuggest-accept
 bindkey '^j' autosuggest-accept
 #Make Tab and ShiftTab cycle completions on the command line
 # bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# bindkey -v #vi mode
+bindkey -v #vi mode
 # Bindkeys - use sudo showkey -a to get sequences
 # Shift-Left / Shift-Right
 bindkey "^[[1;2D" backward-word
