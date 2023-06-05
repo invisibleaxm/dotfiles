@@ -84,6 +84,7 @@ eval $(thefuck --alias)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=108'
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #this would bind ctrl + space to accept the current suggestion.
 zstyle '*:compinit' arguments -D -i -u -C -w
 #i belineve the line below is achieved via the fzf plugin
