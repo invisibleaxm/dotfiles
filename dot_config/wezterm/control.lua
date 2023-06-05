@@ -157,7 +157,25 @@ local keys = {
 	{ key = "7", mods = "ALT", action = act.ActivateTab(6) },
 	{ key = "8", mods = "ALT", action = act.ActivateTab(7) },
 	{ key = "9", mods = "ALT", action = act.ActivateTab(8) },
-	-- { key = "0", mods = "LEADER", action = act.ActivateTab(-1) },
+	{ key = "=", mods = "CTRL", action = act.IncreaseFontSize },
+	{ key = "=", mods = "SUPER", action = act.IncreaseFontSize },
+	{ key = "-", mods = "CTRL", action = act.DecreaseFontSize },
+	{ key = "-", mods = "SUPER", action = act.DecreaseFontSize },
+	{
+		key = "R",
+		mods = "LEADER|SHIFT",
+		action = act.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	-- { key = "0", mods = "SUPER",  action = act.ActivateTab(-1) },
 }
 
