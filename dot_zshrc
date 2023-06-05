@@ -75,11 +75,12 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 
 # completion config
-# zstyle ':completion:*' file-sort access
+zstyle ':completion:*' file-sort access
+zstyle ':autocomplete:*' default-context history-incremental-search-backward
 # workaround for "do you wish to see all x possibilities" prompt eating input
-# zstyle ':completion:*' menu select=long
+zstyle ':completion:*' menu select=long
 # fuzzy matching for completions
-# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
@@ -91,7 +92,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 # requires fzf to be installed
 # style ':autocomplete:*' fzf-completion yes
 # requires z to be installed
-# zstyle ':autocomplete:*' recent-dirs zsh-z
+zstyle ':autocomplete:*' recent-dirs zsh-z
 
 # auto complete colors
 # zstyle ':completion:*:default' list-colors \
