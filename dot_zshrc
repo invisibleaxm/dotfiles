@@ -36,11 +36,11 @@ else #ubuntu section
   plugins=(
     vi-mode
 
-    # fd
+    fd
     # fzf
-    # git
-    # docker
-    # sudo
+    git
+    docker
+    sudo
     # zsh-dircolors-solarized
     starship
     zsh-autocomplete
