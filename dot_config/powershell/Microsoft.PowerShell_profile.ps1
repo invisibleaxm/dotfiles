@@ -113,10 +113,13 @@ Run-Step "PsFzf" {
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 }
 
-Run-Step "z" {
-  Import-Module -Name "z"
-}
+# Run-Step "z" {
+#   Import-Module -Name "z"
+# }
 
+Run-step "zoxide" {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
 # posh-git
 # Run-Step "Posh-Git" {
 #   Import-Module posh-git
