@@ -120,7 +120,7 @@ zstyle ':autocomplete:*' recent-dirs zsh-z
 # ========
 # keybinds
 # ========
-bindkey -s ^l "^uload_azdevops^M"
+bindkey -s ^L "^uload_azdevops^M"
 bindkey -s ^g "^usshagent^M"
 bindkey -s ^w "^uwezterm_sessionizer^M"
 bindkey -s ^f "^utmux_sessionizer^M"
