@@ -89,4 +89,4 @@ style = 'blue bold'
 disabled = true
 
 [line_break]
-disabled = true
+disabled = false
