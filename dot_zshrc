@@ -39,19 +39,19 @@ export PATH="$PATH:$LOCAL_BIN"
 if [[ `uname` == "Darwin" ]]; then #as we are using fig on mac, we skip some of the completion plugins
   alias dircolors='gdircolors'
   plugins=(
-    # vi-mode
+    vi-mode
     fd
     fzf
     sudo
     zsh-dircolors-solarized
     virtualenv
+    starship
   )
 else #ubuntu section
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
   export PATH="$PATH:$BREW_HOME"
   plugins=(
     vi-mode
-
     fd
     fzf
     git
