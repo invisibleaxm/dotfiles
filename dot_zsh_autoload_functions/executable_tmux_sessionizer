@@ -22,8 +22,6 @@ if ! tmux has -t $session_name >/dev/null 2>&1; then
 fi
 args=(switchc -t $session_name)
 tmux "${args[@]}"
-
-#
 #
 # if [[ $# -eq 1 ]]; then
 # 	selected=$1
