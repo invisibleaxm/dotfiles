@@ -41,7 +41,7 @@ if [[ `uname` == "Darwin" ]]; then #as we are using fig on mac, we skip some of 
     vi-mode
     fd
     fzf
-    sudo
+    # sudo
     zsh-dircolors-solarized
     virtualenv
     starship
@@ -49,13 +49,16 @@ if [[ `uname` == "Darwin" ]]; then #as we are using fig on mac, we skip some of 
 else #ubuntu section
   export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
   export PATH="$PATH:$BREW_HOME"
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
   plugins=(
     vi-mode
     fd
     fzf
     git
     docker
-    sudo
+    # sudo
     zsh-dircolors-solarized
     starship
     zsh-autocomplete
