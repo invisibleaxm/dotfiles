@@ -25,6 +25,9 @@ $character"""
 
 [directory]
 style = "blue"
+truncation_length = 100
+truncate_to_repo = false
+format = "[$path]($style)[$read_only]($read_only_style) "
 
 [character]
 success_symbol = "[❯](purple)"
@@ -91,4 +94,4 @@ style = 'blue bold'
 disabled = true
 
 [line_break]
-disabled = true
+disabled = false
