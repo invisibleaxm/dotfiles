@@ -171,7 +171,8 @@ bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 # zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-
+#binds ctrl-bksp to delete by word.
+bindkey '^H' backward-kill-word
 
 # ======
 # alias
