@@ -92,14 +92,15 @@ FZF_PREVIEW_WINDOW='top'
 FZF_TMUX_OPTS="-p"
 FZF_CTRL_R_OPTS="--reverse --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+FZF_DEFAULT_OPTS='--no-height --no-reverse'
 ZSH_HIGHLIGHT_DIRS_BLACKLIST+=(/mnt/c)
 #export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 #export FZF_PREVIEW_ADVANCED=true
 
 # completion config
 zstyle ':completion:*' file-sort access
+zstyle ':autocomplete:*' list-lines 7
 zstyle ':autocomplete:*' default-context history-incremental-search-backward
 bindkey -M menuselect '\r' .accept-line
 # workaround for "do you wish to see all x possibilities" prompt eating input
