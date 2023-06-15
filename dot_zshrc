@@ -101,6 +101,7 @@ ZSH_HIGHLIGHT_DIRS_BLACKLIST+=(/mnt/c)
 # completion config
 zstyle ':completion:*' file-sort access
 zstyle ':autocomplete:*' default-context history-incremental-search-backward
+bindkey -M menuselect '\r' .accept-line
 # workaround for "do you wish to see all x possibilities" prompt eating input
 zstyle ':completion:*' menu select=long
 # fuzzy matching for completions
