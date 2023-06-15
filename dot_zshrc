@@ -59,6 +59,7 @@ else #ubuntu section
     fzf
     git
     docker
+    zsh-aliases-exa
     # sudo
     zsh-dircolors-solarized
     starship
