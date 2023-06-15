@@ -107,6 +107,14 @@ zstyle ':completion:*' menu select=long
 # fuzzy matching for completions
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\eOA' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+bindkey '\eOB' history-beginning-search-forward
+zle -A {.,}history-incremental-search-forward
+zle -A {.,}history-incremental-search-backward
+
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 # zsh-autocomplete config https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
