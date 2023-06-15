@@ -91,6 +91,8 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 FZF_PREVIEW_WINDOW='top'
 FZF_TMUX_OPTS="-p"
 FZF_CTRL_R_OPTS="--reverse --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 ZSH_HIGHLIGHT_DIRS_BLACKLIST+=(/mnt/c)
 #export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 #export FZF_PREVIEW_ADVANCED=true
