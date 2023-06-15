@@ -130,7 +130,7 @@ bindkey -s ^g "^usshagent^M"
 bindkey -s ^w "^uwezterm_sessionizer^M"
 bindkey -s ^f "^utmux_sessionizer^M"
 bindkey '^ ' autosuggest-accept
-bindkey "${key[Up]}" fzf-history-widget
+# bindkey "${key[Up]}" fzf-history-widget
 # bindkey '^[[A' fzf-history-widget
 # bindkey '^j' autosuggest-accept
 #Make Tab and ShiftTab cycle completions on the command line
