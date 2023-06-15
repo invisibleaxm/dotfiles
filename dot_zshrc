@@ -51,6 +51,7 @@ else #ubuntu section
   export PATH="$PATH:$BREW_HOME"
   export DOTNET_ROOT=$HOME/dotnet
   export PATH="$PATH:$HOME/.pyenv/bin:$HOME/dotnet"
+  export PATH=$PATH:/usr/local/go/bin
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
   plugins=(
