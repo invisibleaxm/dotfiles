@@ -9,7 +9,7 @@ function Run-Step([string] $Description, [ScriptBlock]$script) {
   Write-Host "`u{2705}" # checkmark emoji
 }
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
-# Write-Host "Loading PowerShell $($PSVersionTable.PSVersion)..." -ForegroundColor 3
+Write-Host "Loading PowerShell $($PSVersionTable.PSVersion)..." -ForegroundColor 3
 # Write-Host
 
 Run-Step "PSReadline" {
