@@ -4,9 +4,9 @@
 # function prompt {
 # function Initialize-Profile {
 function Run-Step([string] $Description, [ScriptBlock]$script) {
-  # Write-Host -NoNewline "Loading " $Description.PadRight(20)
+  Write-Host -NoNewline "Loading " $Description.PadRight(20)
   & $script
-  # Write-Host "`u{2705}" # checkmark emoji
+  Write-Host "`u{2705}" # checkmark emoji
 }
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 # Write-Host "Loading PowerShell $($PSVersionTable.PSVersion)..." -ForegroundColor 3
