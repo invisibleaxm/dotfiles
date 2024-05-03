@@ -118,9 +118,8 @@ Run-Step "PsFzf" {
 # }
 
 Run-step "zoxide" {
-
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
 }
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # posh-git
 # Run-Step "Posh-Git" {
 #   Import-Module posh-git
