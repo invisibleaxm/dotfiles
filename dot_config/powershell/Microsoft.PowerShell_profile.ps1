@@ -178,7 +178,7 @@ Run-Step "Environment" {
   Set-Alias vim nvim
   Set-Alias cz chezmoi
   Set-Alias ll ls
-  Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
+  # Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 
   # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   #$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
