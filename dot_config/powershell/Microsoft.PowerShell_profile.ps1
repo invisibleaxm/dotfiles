@@ -1,41 +1,23 @@
 #Requires -Version 7
 # $global:profile_initialized = $false
 
-<<<<<<< HEAD
-=======
-# function prompt {
-# function Initialize-Profile {
-
 ###############################################################################################
 # Utilities
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
 function unlock_bw_if_locked() {
-<<<<<<< HEAD
   if ($null -eq $env:BW_SESSION) {
     Write-Output 'bw locked - unlocking into a new session'
-    bw login 'alex.campos@gmail.com' --raw
-=======
-  if ($env:BW_SESSION) {
-    Write-Output 'bw locked - unlocking into a new session'
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
-    $env:BW_SESSION="$(bw unlock --raw)"
+    $env:BW_SESSION="$(bw login 'alex.campos@gmail.com' --raw)"
   }
 }
 
 function load_azdevops() {
   unlock_bw_if_locked
-<<<<<<< HEAD
   $devops_token="$(bw get notes 'AzureDevOps-EnsonoPAT')"
-=======
-  $devops_patid='108a1618-e6cc-43f9-957c-af3300002e66'
-  $devops_token
-  $devops_token="$(bw get notes $devops_patid)"
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
   $env:SYSTEM_ACCESSTOKEN="$devops_token"
   $env:PERSONAL_ACCESS_TOKEN="$devops_token"
 }
@@ -43,32 +25,18 @@ function load_azdevops() {
 function auto {
   Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
   Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
-<<<<<<< HEAD
-  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm0"
-=======
   $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
   if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
   }
 }
 
 function wezterm_sessionizer() {
-<<<<<<< HEAD
-      (fd . $HOME/dev/personal $HOME/dev/work --min-depth 0 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
-  Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
-  Write-Output "Successfully loaded projects on $HOME/.projects"
-}
-=======
-      (fd . $HOME/dev/personal $HOME/dev/work --min-depth 1 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
+  (fd . $HOME/dev/personal $HOME/dev/work --min-depth 1 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
   Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
   Write-Output "Successfully loaded projects on $HOME/.projects"
 }
 
-
-
-
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
 function Run-Step([string] $Description, [ScriptBlock]$script) {
   Write-Host -NoNewline "Loading " $Description.PadRight(20)
   & $script
@@ -203,12 +171,8 @@ Run-Step "Environment" {
   Set-Alias vim nvim
   Set-Alias cz chezmoi
   Set-Alias ll ls
-<<<<<<< HEAD
   Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
-=======
-  # Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
   # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   #$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
   # try {
@@ -223,12 +187,7 @@ Run-Step "Environment" {
   #     Initialize-Profile
   #   }
   # }
-<<<<<<< HEAD
   ###############################################################################################
-  # Utilities
-=======
->>>>>>> f0174c3e6650ee9248031fac3b07a1fc6c432628
-
 }
 
 Run-Step "Starship" {
