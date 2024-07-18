@@ -1,13 +1,46 @@
 #Requires -Version 7
 # $global:profile_initialized = $false
 
-# function prompt {
-# function Initialize-Profile {
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
+function unlock_bw_if_locked() {
+  if ($null -eq $env:BW_SESSION) {
+    Write-Output 'bw locked - unlocking into a new session'
+    bw login 'alex.campos@gmail.com' --raw
+    $env:BW_SESSION="$(bw unlock --raw)"
+  }
+}
+
+function load_azdevops() {
+  unlock_bw_if_locked
+  $devops_token="$(bw get notes 'AzureDevOps-EnsonoPAT')"
+  $env:SYSTEM_ACCESSTOKEN="$devops_token"
+  $env:PERSONAL_ACCESS_TOKEN="$devops_token"
+}
+
+function auto {
+  Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
+  Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
+  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm0"
+  if (Test-Path($ChocolateyProfile)) {
+    Import-Module "$ChocolateyProfile"
+  }
+}
+
+function wezterm_sessionizer() {
+      (fd . $HOME/dev/personal $HOME/dev/work --min-depth 0 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
+  Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
+  Write-Output "Successfully loaded projects on $HOME/.projects"
+}
 function Run-Step([string] $Description, [ScriptBlock]$script) {
   Write-Host -NoNewline "Loading " $Description.PadRight(20)
   & $script
   Write-Host "`u{2705}" # checkmark emoji
 }
+
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 Write-Host "Loading PowerShell $($PSVersionTable.PSVersion)..." -ForegroundColor 3
 # Write-Host
@@ -138,7 +171,6 @@ Run-Step "Environment" {
   Set-Alias cz chezmoi
   Set-Alias ll ls
   Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
-
   # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   #$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression
   # try {
@@ -155,43 +187,6 @@ Run-Step "Environment" {
   # }
   ###############################################################################################
   # Utilities
-  function which ($command) {
-    Get-Command -Name $command -ErrorAction SilentlyContinue |
-      Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
-  }
-
-  function unlock_bw_if_locked() {
-    if ($env:BW_SESSION) {
-      Write-Output 'bw locked - unlocking into a new session'
-      $env:BW_SESSION="$(bw unlock --raw)"
-    }
-  }
-
-  function load_azdevops() {
-    unlock_bw_if_locked
-    $devops_patid='108a1618-e6cc-43f9-957c-af3300002e66'
-    $devops_token
-    $devops_token="$(bw get notes $devops_patid)"
-    $env:SYSTEM_ACCESSTOKEN="$devops_token"
-    $env:PERSONAL_ACCESS_TOKEN="$devops_token"
-  }
-
-  function auto {
-    Import-Module -Name "DockerCompletion" -ErrorAction Ignore -WarningAction Ignore
-    Import-Module -Name "Az.Tools.Predictor" -ErrorAction Ignore -WarningAction Ignore
-    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-    if (Test-Path($ChocolateyProfile)) {
-      Import-Module "$ChocolateyProfile"
-    }
-  }
-
-  function wezterm_sessionizer() {
-      (fd . $HOME/dev/personal $HOME/dev/work --min-depth 1 --max-depth 1 --type directory | Resolve-Path).path | Out-File $HOME/.projects
-    Write-Output "$env:LOCALAPPDATA/nvim" | Out-File $HOME/.projects -Append
-    Write-Output "Successfully loaded projects on $HOME/.projects"
-  }
-
-
 
 }
 
